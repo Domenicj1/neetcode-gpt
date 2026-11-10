@@ -9,14 +9,14 @@ class Solution:
         # return np.round(your_answer, 4)
         sum = 0
         max_z = np.max(z)
-        exp_nums = []
+        exp_logits = []
         softmax_z = []
         
-        for n in z:
-            exp_val = np.exp(n - max_z)
-            sum += exp_val
-            exp_nums.append(exp_val)
-        for i in exp_nums:
+        for logit in z:
+            exp_z = np.exp(logit - max_z)
+            sum += exp_z
+            exp_logits.append(exp_z)
+        for i in exp_logits:
             softmax_z.append(i/sum)
         
         return np.round(softmax_z, 4)
